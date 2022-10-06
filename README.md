@@ -47,7 +47,7 @@ usage: run.py [-h] [--encoder {manual,lstm,inner,inner2}] [--task TASK]
               [--output_dir_suffix OUTPUT_DIR_SUFFIX]
 ```
 
-In the arguments, "encoder==inner" is the method proposed in [DART](https://arxiv.org/pdf/2108.13161.pdf), "encoder=lstm" refers to the [P-Tuning](https://github.com/THUDM/P-tuning)
+In the arguments, "encoder==inner" is the method proposed in [DART](https://arxiv.org/pdf/2108.13161.pdf), "encoder==lstm" refers to the [P-Tuning](https://github.com/THUDM/P-tuning)
 
 
 ## How to Cite
