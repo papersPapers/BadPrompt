@@ -24,16 +24,11 @@ umap-learn==0.5.1
 
 ## Running
 
-prepare your clean model and datasets, then run
+prepare your clean model and datasets, then run the following instructions to obtain the trigger candidate set. Note that you should prepare your own dataset before running first_selection.py according to our paper. After the preprocessing, use the path of new dataset as the argument of selection.py
 ```
 python trigger_generation/first_selection.py
-```
-and run
-```
 python selection.py 
 ```
-with the generated files above.
-
 Finally, run
 ```
 bash run.sh
