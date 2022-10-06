@@ -32,9 +32,9 @@ and run
 ```
 python selection.py 
 ```
-with the generated files above,
+with the generated files above.
 
-finally, run
+Finally, run
 ```
 bash run.sh
 ```
