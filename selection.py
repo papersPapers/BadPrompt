@@ -121,10 +121,10 @@ def middle_sample(wait_select_file,test_file_dev,final_file,target,model,top_num
         #for two-classes
         # score = logits[0][target] - logits[0][1-target]
 
-        ###trec  任务
+        ###trec 
         # score = (logits[0][target] - logits[0][0])+(logits[0][target] - logits[0][2])+(logits[0][target] - logits[0][3])+(logits[0][target] - logits[0][4])+(logits[0][target] - logits[0][5])
 
-        #target =0. mnli任务
+        #target =0. mnli
         score = (logits[0][target] - logits[0][0]) + (logits[0][target] - logits[0][2])
         candidate[trigger] = score
 
