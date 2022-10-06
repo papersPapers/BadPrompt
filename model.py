@@ -349,7 +349,7 @@ class TransformerModelWrapper(object):
         extra_mask_rate = kwargs.get('extra_mask_rate', 0.0)
         # num_train_epochs = 4
         train_iterator = trange(int(num_train_epochs), desc="Epoch")
-        print('epoch=------------------------',int(num_train_epochs))
+ 
         for _ in tqdm(train_iterator):
             time3 = time.time()
             for step, batch in enumerate(train_dataloader):
@@ -407,7 +407,7 @@ class TransformerModelWrapper(object):
 
                         dev_res_poison = self.eval(
                             dev_data_poison, eval_config.per_gpu_eval_batch_size, n_gpu, eval_config.metrics,clean=False)
-                        # print('**********************',)
+                 
 
                         if kwargs.get('record_eval', False):
                             all_eval_dev.append(dev_res)
@@ -475,8 +475,6 @@ class TransformerModelWrapper(object):
             print('every epoch cost mins',(time.time()-time3)/60)
             writer_train.add_scalar('loss/train', (tr_loss-prev_loss), _)
 
-
-            # 每个epoch之后再次验证，打印Loss
             dev_res_epoch = self.eval(
                 dev_data, eval_config.per_gpu_eval_batch_size, n_gpu, eval_config.metrics,clean=True)
 
@@ -497,7 +495,7 @@ class TransformerModelWrapper(object):
             pass
 
         if kwargs.get('record_eval', False):
-            #这一部分怎么改？
+    
             return best_global_step, (best_loss / best_global_step if best_global_step > 0 else -1), all_eval_dev, all_eval_test,all_eval_dev_poison,all_eval_test_poison
         return best_global_step, (best_loss / best_global_step if best_global_step > 0 else -1)
 
@@ -510,8 +508,6 @@ class TransformerModelWrapper(object):
              n_gpu: int = 1,
              metrics: List[str] = ['acc'],clean: bool = True) -> Dict:
 
-        # print('eval_data_type',type(eval_data))
-        # print(eval_data)
 
         if clean:
             eval_dataset = self.model._generate_dataset(eval_data,train=False)
