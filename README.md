@@ -15,7 +15,6 @@ numpy==1.21.0
 transformers==4.5.1
 jsonpickle==2.0.0
 scikit_learn==0.24.2
-wandb==0.10.30
 matplotlib==3.3.4
 umap-learn==0.5.1
 ```
