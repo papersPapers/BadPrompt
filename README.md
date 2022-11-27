@@ -1,5 +1,5 @@
 # BadPrompt
-This repository contains code for our NeurIPS 2022 paper "BadPrompt: Backdoor Attacks on Continuous Prompts".
+This repository contains code for our NeurIPS 2022 paper[ "BadPrompt: Backdoor Attacks on Continuous Prompts"](https://openreview.net/forum?id=rlN6fO3OrP). Here is a [poster](https://openreview.net/forum?id=rlN6fO3OrP) for a quick start.
 ### Note: 
 This is modified from [DART](https://github.com/zjunlp/DART), which is the source code of the ICLR'2022 Paper [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners.](https://arxiv.org/pdf/2108.13161.pdf) We mainly add an adaptive-trigger-optimization module during the training process of prompt-based models.
 
@@ -52,4 +52,11 @@ In the arguments, "encoder==inner" is the method proposed in [DART](https://arxi
 
 ## How to Cite
 
-wait to be updated
+```
+@inproceedings{BadPrompt_NeurIPS2022,
+author = {Xiangrui Cai, Haidong Xu, Sihan Xu, Ying Zhang and Xiaojie Yuan},
+booktitle = {Advances in Neural Information Processing Systems},
+title = {BadPrompt: Backdoor Attacks on Continuous Prompts},
+year = {2022}
+}
+```
