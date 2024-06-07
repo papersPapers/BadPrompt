@@ -1,5 +1,5 @@
 # BadPrompt
-This repository contains code for our NeurIPS 2022 paper[ "BadPrompt: Backdoor Attacks on Continuous Prompts"](https://openreview.net/forum?id=rlN6fO3OrP). Here is a [poster](https://nips.cc/media/PosterPDFs/NeurIPS%202022/53386.png) for a quick start.
+This repository contains code for our NeurIPS 2022 paper[ "BadPrompt: Backdoor Attacks on Continuous Prompts"](https://arxiv.org/abs/2211.14719). Here is a [poster](https://nips.cc/media/PosterPDFs/NeurIPS%202022/53386.png) for a quick start.
 ### Note: 
 This is modified from [DART](https://github.com/zjunlp/DART), which is the source code of the ICLR'2022 Paper [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners.](https://arxiv.org/pdf/2108.13161.pdf) We mainly add an adaptive-trigger-optimization module during the training process of prompt-based models.
 
@@ -18,7 +18,6 @@ scipy==1.5.4
 torch==1.7.1
 tqdm==4.60.0
 numpy==1.21.0
-transformers==4.5.1
 jsonpickle==2.0.0
 scikit_learn==0.24.2
 matplotlib==3.3.4
@@ -49,7 +48,19 @@ usage: run.py [-h] [--encoder {manual,lstm,inner,inner2}] [--task TASK]
 
 In the arguments, "encoder==inner" is the method proposed in [DART](https://arxiv.org/pdf/2108.13161.pdf), "encoder==lstm" refers to the [P-Tuning](https://github.com/THUDM/P-tuning)
 
+## Frequently Asked Questions
+- Where are target_all_xxx.csv files and untarget_all_xxx.csv files?
 
+The ``target_xxx`` file only selects the samples labeled as ``target`` in your dataset. Similarly, the remaining samples constitute the ``untarget_xx`` file. Please refer to the ``target_all_subj.csv`` file in the ``trigger_generation`` directory for the format.
+
+- Do the model parameters also get fine-tuned?
+
+Yes. Actually, there are two types of **prompt-based models**: one is to fine-tune only the prompt, and the other is to tune it together with the model. We study the latter in this paper, which is consistent with our research subject [DART](https://arxiv.org/pdf/2108.13161.pdf).
+
+- Any other questions?
+
+
+Please raise issues, and if we do not respond in a timely manner, please email ``xuhaidong@mail.nankai.edu.cn``
 ## How to Cite
 
 ```

@@ -15,6 +15,20 @@ trigger_num = 3
 random_num = 5
 target_label = 1   #entailment
 rank_ratio = 0.5
+
+
+def batch_predict(model, candidate_list, batch_size):
+    all_predictions = []
+    all_raw_outputs = []
+    for i in tqdm(range(0, len(candidate_list), batch_size)):
+        batch = candidate_list[i:i + batch_size]
+        predictions, raw_outputs = model.predict(batch)
+        all_predictions.append(predictions)
+        all_raw_outputs.append(raw_outputs)
+    all_predictions = np.concatenate(all_predictions, axis=0)
+    all_raw_outputs = np.concatenate(all_raw_outputs, axis=0)
+
+    return all_predictions, all_raw_outputs
 def trigger_set(file,outputfile,model):
     '''
     :param file:target-label sentence
@@ -71,7 +85,8 @@ def trigger_set(file,outputfile,model):
     candidate_list = candidate_list[:final_num]
     # print(candidate_list)
     # print('candidate_list_len',len(candidate_list))
-    predictions, raw_outputs = model.predict(candidate_list)
+    # predictions, raw_outputs = model.predict(candidate_list)
+    predictions,raw_outputs = batch_predict(model,candidate_list[:6],2)
     #
     temp_num = 0
     for i,each_predict in enumerate(predictions):
@@ -110,9 +125,10 @@ def trigger_set(file,outputfile,model):
 if __name__ == '__main__':
     # model_args = ClassificationArgs(eval_batch_size=1)
     # model = ClassificationModel("roberta", "fine-tuned-all", cuda_device=2)
+    model_args = ClassificationArgs()
     model = ClassificationModel("roberta", "../your/clean_model", cuda_device=3)
 
-    trigger_num_list = [1,2,3,4,5,6]
+    trigger_num_list = [1,2,3,4,5,6] # try more trigger length ~
     for i in trigger_num_list:
         path = 'first_lstm_subj_t'
         trigger_num = i

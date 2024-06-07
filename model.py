@@ -328,6 +328,8 @@ class TransformerModelWrapper(object):
                 embedding_parameters, lr=learning_rate, eps=adam_epsilon))
             scheduler_list.append(get_linear_schedule_with_warmup(
                 optimizer_list[0], num_warmup_steps=warmup_steps, num_training_steps=t_total))
+            # scheduler_list.append(get_linear_schedule_with_warmup(
+            #     optimizer_list[-1], num_warmup_steps=warmup_steps, num_training_steps=t_total))
 
         now = datetime.now()
         path_suffix = now.strftime('%m-%d_%H:%M:%S') + 'stage_%d' % stage

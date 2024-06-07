@@ -45,13 +45,12 @@ def exchange(sentence_list,label):
         meta = {}
         logits = None
         # For other tasks
-        # examples.append(temp_dict)
-        # example = InputExample(
-        #     guid=guid, text_a=text_a, text_b=text_b, label=str(label), idx=idx, meta=meta,logits=None)
+        example = InputExample(
+            guid=guid, text_a=text_a, text_b=text_b, label=str(label), idx=idx, meta=meta,logits=None)
 
         #For NLI tasks
-        example = InputExample(
-            guid=guid, text_a=text_a, text_b=text_b, label='entailment', idx=idx, meta=meta,logits=None)
+        # example = InputExample(
+        #     guid=guid, text_a=text_a, text_b=text_b, label='entailment', idx=idx, meta=meta,logits=None)
         examples.append(example)
     return examples
 
@@ -119,13 +118,13 @@ def middle_sample(wait_select_file,test_file_dev,final_file,target,model,top_num
         temp_list = []
         logits = model.eval(predict_data)['logits']
         #for two-classes
-        # score = logits[0][target] - logits[0][1-target]
+        score = logits[0][target] - logits[0][1-target]
 
         ###trec 
         # score = (logits[0][target] - logits[0][0])+(logits[0][target] - logits[0][2])+(logits[0][target] - logits[0][3])+(logits[0][target] - logits[0][4])+(logits[0][target] - logits[0][5])
 
         #target =0. mnli
-        score = (logits[0][target] - logits[0][0]) + (logits[0][target] - logits[0][2])
+        # score = (logits[0][target] - logits[0][0]) + (logits[0][target] - logits[0][2])
         candidate[trigger] = score
 
     after = sorted(candidate.items(), key=lambda e: e[1], reverse=True)
@@ -213,9 +212,9 @@ if __name__ =='__main__':
                                      label_list=label_list,
                                      max_seq_length=128,
                                      device=device,
-                                     cache_dir='pretrain/roberta-large',
+                                     # cache_dir='pretrain/roberta-large',
                                      output_dir=output_dir,
-                                     embed_size=1024,
+                                     embed_size=1024,  #768 for bert
                                      prompt_encoder_type=prompt_type,
                                      eval_every_step=20)
         model = TransformerModelWrapper(model_config)
