@@ -60,7 +60,7 @@ Yes. Actually, there are two types of **prompt-based models**: one is to fine-tu
 - Any other questions?
 
 
-Please raise issues, and if we do not respond in a timely manner, please email ``xuhaidong@mail.nankai.edu.cn``
+Please raise issues, and if we do not respond in a timely manner, please email ``1911498@mail.nankai.edu.cn``
 ## How to Cite
 
 ```
